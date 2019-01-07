@@ -12,25 +12,33 @@ const hikeURL = 'https://www.hikingproject.com/data/get-trails?';
 const yelpURL = 'https://api.yelp.com/v3/businesses/search?';
 const geocodeURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
 
+// Function converts location entered in search to lattitude and longitude
 function convertLocToLatLong(location){
   let searchURL = geocodeURL + `address=${encodeURIComponent(location)}&key=${mapsAPIKey}` ;
   console.log(searchURL);
-  let searchLat = fetch(searchURL)
+  let locArr = []
+
+  let searchLatLng = fetch(searchURL)
     .then(response => response.json())
-    .then(responseJSON => responseJSON.results[0].geometry.location.lat);
+    .then(responseJSON => responseJSON.results[0].geometry.location);
+  
   let searchLng = fetch(searchURL)
     .then(response => response.json())
     .then(responseJSON => responseJSON.results[0].geometry.location.lng);
-  let locArr = [searchLat, searchLng];
-  return locArr;
+
+  console.log(searchLatLng);
+}
+
+function getHikeResults(location){
+  let latLong = convertLocToLatLong(location);
+  console.log(latLong);
 }
 
 function watchForm(){
   $('form').submit(event => {
     event.preventDefault();
     let searchLoc = $('form').find('#search-loc').val();
-    convertLocToLatLong(searchLoc);
-    console.log('it works')
+    getHikeResults(searchLoc);
   })
 };
 
