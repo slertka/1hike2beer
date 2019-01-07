@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>1hike2beer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class='container-fluid'>
+  <header>
+    <h1>1hike2beer</h1>
+    <h2>Go on a hike. Treat yo' self with a beer.</h2>
+  </header>
+    <main>
+      <form>
+        <fieldset>
+          <legend>Where do you want to go hiking?</legend>
+          <input type="text" placeholder="Enter city or zipcode" id='search-loc'>
+          <input type="text" placeholder="Search distance">
+          <input type="submit">
+        </fieldset>
+      </form>
+    </main>
+    <section class='hidden'>
+      <section class='js-hike-results hike-results'>
+        <h3>First we go on a hike...</h3>
+      </section>
+      <section class='js-beer-results beer-results'>
+        <h3>Then we enjoy some beer...</h3>
+      </section>
+    </section>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
