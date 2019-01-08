@@ -16,29 +16,24 @@ const geocodeURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
 function convertLocToLatLong(location){
   let searchURL = geocodeURL + `address=${encodeURIComponent(location)}&key=${mapsAPIKey}` ;
   console.log(searchURL);
-  let locArr = []
-
-  let searchLatLng = fetch(searchURL)
-    .then(response => response.json())
-    .then(responseJSON => responseJSON.results[0].geometry.location);
   
-  let searchLng = fetch(searchURL)
-    .then(response => response.json())
-    .then(responseJSON => responseJSON.results[0].geometry.location.lng);
-
-  console.log(searchLatLng);
-}
-
-function getHikeResults(location){
-  let latLong = convertLocToLatLong(location);
-  console.log(latLong);
+  fetch(searchURL)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText)
+    }
+      )
+    .then(responseJSON => JSON.stringify(responseJSON.results[0].geometry.location))
+    .catch(err => console.log(err.message))
 }
 
 function watchForm(){
   $('form').submit(event => {
     event.preventDefault();
     let searchLoc = $('form').find('#search-loc').val();
-    getHikeResults(searchLoc);
+    convertLocToLatLong(searchLoc);
   })
 };
 
