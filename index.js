@@ -17,7 +17,7 @@ function convertLocToLatLong(location){
   let searchURL = geocodeURL + `address=${encodeURIComponent(location)}&key=${mapsAPIKey}` ;
   console.log(searchURL);
   
-  fetch(searchURL)
+  let searchLatLng = fetch(searchURL)
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -25,8 +25,10 @@ function convertLocToLatLong(location){
       throw new Error(response.statusText)
     }
       )
-    .then(responseJSON => JSON.stringify(responseJSON.results[0].geometry.location))
+    .then(responseJSON => console.log(JSON.stringify(responseJSON.results[0].geometry.location)))
     .catch(err => console.log(err.message))
+
+  console.log(searchLatLng);
 }
 
 function watchForm(){
