@@ -6,6 +6,10 @@ const optionsYelp = {
 };
 const hikeAPIKey = '200405472-b58f2be71509e5cbbac487a794df0b61';
 const mapsAPIKey = 'AIzaSyA2pbng72aHFW9jfZ7wmXT8H12MNpTerW8';
+var coordinates = {
+  "lat": 47.6062095,
+  "lng": -122.3320708
+};
 
 // BASE API URLS
 const hikeURL = 'https://www.hikingproject.com/data/get-trails?';
@@ -17,7 +21,7 @@ function convertLocToLatLong(location){
   let searchURL = geocodeURL + `address=${encodeURIComponent(location)}&key=${mapsAPIKey}` ;
   console.log(searchURL);
   
-  let searchLatLng = fetch(searchURL)
+  fetch(searchURL)
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -25,17 +29,32 @@ function convertLocToLatLong(location){
       throw new Error(response.statusText)
     }
       )
-    .then(responseJSON => console.log(JSON.stringify(responseJSON.results[0].geometry.location)))
+    // Need to figure out how to get this function to return the object for geometry.location
+    .then(responseJSON => {
+      let searchLatLng = responseJSON.results[0].geometry.location;
+      console.log(searchLatLng)
+    })
     .catch(err => console.log(err.message))
+}
 
-  console.log(searchLatLng);
+function displayHikeResults(){
+  let hikeSearchURL = hikeURL + `lat=${coordinates.lat}&lon=${coordinates.lng}&key=${hikeAPIKey}`;
+
+  fetch(hikeSearchURL)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText);
+    })
+    .then(responseJSON => console.log(responseJSON))
 }
 
 function watchForm(){
   $('form').submit(event => {
     event.preventDefault();
     let searchLoc = $('form').find('#search-loc').val();
-    convertLocToLatLong(searchLoc);
+    displayHikeResults();
   })
 };
 
