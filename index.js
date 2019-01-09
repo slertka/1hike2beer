@@ -12,10 +12,9 @@ const yelpURL = 'https://api.yelp.com/v3/businesses/search?categories=breweries,
 const geocodeURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
 
 // Function converts location entered in search to lattitude and longitude
-function convertLocToLatLong(location){
+function convertLocToLatLong(location, dist){
   let searchURL = geocodeURL + `address=${encodeURIComponent(location)}&key=${mapsAPIKey}` ;
-  console.log(searchURL);
-  
+
   fetch(searchURL)
     .then(response => {
       if (response.ok) {
@@ -26,7 +25,7 @@ function convertLocToLatLong(location){
       )
     .then(responseJSON => {
       let searchCoord = responseJSON.results[0].geometry.location;
-      getHikeResults(searchCoord);
+      getHikeResults(searchCoord, dist);
     })
     .catch(err => console.log(err.message))
 }
@@ -40,16 +39,15 @@ function displayHikeResults(responseJSON){
         <h4>${responseJSON.trails[i].name}</h4>
         <p>Location: ${responseJSON.trails[i].location}
         <br>Distance: ${responseJSON.trails[i].length} miles
-        <br>Rating: ${responseJSON.trails[i].stars}/5 stars based on ${responseJSON.trails[i].starVotes}</p>
+        <br>Rating: ${responseJSON.trails[i].stars}/5 stars based on ${responseJSON.trails[i].starVotes} reviews</p>
       </li>
     `)
   }
 }
 
-function getHikeResults(coordinates){
-  let hikeSearchURL = hikeURL + `lat=${coordinates.lat}&lon=${coordinates.lng}&key=${hikeAPIKey}`;
-  console.log( `running Hiking project API... ${hikeSearchURL}`)
-
+function getHikeResults(coordinates, dist){
+  let hikeSearchURL = hikeURL + `lat=${coordinates.lat}&lon=${coordinates.lng}&key=${hikeAPIKey}&maxDistance=${dist}`;
+  console.log(hikeSearchURL)
   fetch(hikeSearchURL)
     .then(response => {
       if (response.ok) {
@@ -64,7 +62,8 @@ function watchForm(){
   $('form').submit(event => {
     event.preventDefault();
     let searchLoc = $('form').find('#search-loc').val();
-    convertLocToLatLong(searchLoc);
+    let searchDist = $('form').find('#max-distance').val();
+    convertLocToLatLong(searchLoc, searchDist);
   })
 };
 
