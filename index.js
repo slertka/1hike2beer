@@ -24,10 +24,9 @@ function convertLocToLatLong(location){
       throw new Error(response.statusText)
     }
       )
-    // Need to figure out how to get this function to return the object for geometry.location
     .then(responseJSON => {
-      let searchLatLng = responseJSON.results[0].geometry.location;
-      console.log(searchLatLng)
+      let searchCoord = responseJSON.results[0].geometry.location;
+      getHikeResults(searchCoord);
     })
     .catch(err => console.log(err.message))
 }
@@ -47,7 +46,7 @@ function displayHikeResults(responseJSON){
   }
 }
 
-function getHikeResults(){
+function getHikeResults(coordinates){
   let hikeSearchURL = hikeURL + `lat=${coordinates.lat}&lon=${coordinates.lng}&key=${hikeAPIKey}`;
   console.log( `running Hiking project API... ${hikeSearchURL}`)
 
@@ -65,7 +64,7 @@ function watchForm(){
   $('form').submit(event => {
     event.preventDefault();
     let searchLoc = $('form').find('#search-loc').val();
-    getHikeResults();
+    convertLocToLatLong(searchLoc);
   })
 };
 
