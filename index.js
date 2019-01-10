@@ -4,7 +4,6 @@ const mapsAPIKey = 'AIzaSyA2pbng72aHFW9jfZ7wmXT8H12MNpTerW8';
 
 // BASE API URLS
 const hikeURL = 'https://www.hikingproject.com/data/get-trails?';
-const beerURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=brewery&';
 const geocodeURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
 
 // Function converts location entered in search to lattitude and longitude
@@ -62,7 +61,7 @@ function displayBeerResults(results, status) {
       $('.js-beer-results').append(`
         <li>
           <h4>${results[i].name}</h4>
-          <p>Rating: ${results[i].rating}/5 stars based on ${results[i].user_ratings_total}</p>
+          <p>Rating: ${results[i].rating}/5 stars based on ${results[i].user_ratings_total} reviews</p>
         </li>
       `)
     }
@@ -76,7 +75,7 @@ function initPlaceMap(coordinates, dist) {
   var request = {
     location: searchArea,
     radius: dist*1609,
-    keyword: 'brewery'
+    keyword: 'brewpub'
   };
 
   let service = new google.maps.places.PlacesService(map);
