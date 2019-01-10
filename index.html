@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
 
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2pbng72aHFW9jfZ7wmXT8H12MNpTerW8&libraries=places"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -31,9 +32,10 @@
       <h3>First we go on a hike...</h3>
       <ul class='js-hike-results hike-results'>
       </ul>
+      <h3>Then we enjoy some beer...</h3>
       <section class='js-beer-results beer-results'>
-        <h3>Then we enjoy some beer...</h3>
       </section>
+      <section id='map'></section>
     </section>
   </div>
   <script src="index.js"></script>
