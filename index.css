@@ -1,3 +1,7 @@
 .hidden {
   display: none;
 }
+
+.hike-results, .display-map, .beer-results {
+  border: 1px solid black;
+}
