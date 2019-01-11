@@ -6,6 +6,9 @@ const mapsAPIKey = 'AIzaSyA2pbng72aHFW9jfZ7wmXT8H12MNpTerW8';
 const hikeURL = 'https://www.hikingproject.com/data/get-trails?';
 const geocodeURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
 
+var map;
+var marker;
+
 // Function converts location entered in search to lattitude and longitude
 function convertLocToLatLong(location, dist){
   let searchURL = geocodeURL + `address=${encodeURIComponent(location)}&key=${mapsAPIKey}` ;
@@ -37,7 +40,8 @@ function displayHikeResults(responseJSON){
         <br>Distance: ${responseJSON.trails[i].length} miles
         <br>Rating: ${responseJSON.trails[i].stars}/5 stars based on ${responseJSON.trails[i].starVotes} reviews</p>
       </li>
-    `)
+    `);
+    marker = new google.maps.Marker({position: {'lat': responseJSON.trails[i].latitude, 'lng': responseJSON.trails[i].longitude}, map: map})
   }
 }
 
@@ -63,14 +67,18 @@ function displayBeerResults(results, status) {
           <h4>${results[i].name}</h4>
           <p>Rating: ${results[i].rating}/5 stars based on ${results[i].user_ratings_total} reviews</p>
         </li>
-      `)
+      `);
+    marker = new google.maps.Marker({position: results[i].geometry.location, map: map})
     }
   }
 }
 
 function initPlaceMap(coordinates, dist) {
   let searchArea = new google.maps.LatLng(coordinates.lat, coordinates.lng);
-  let map = new google.maps.Map(document.getElementById('map'));
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: coordinates,
+    zoom: 10
+  });
 
   var request = {
     location: searchArea,
