@@ -4,4 +4,6 @@
 
 .hike-results, .display-map, .beer-results {
   border: 1px solid black;
+  height: 450px;
+  overflow-y: scroll;
 }
