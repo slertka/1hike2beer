@@ -34,8 +34,7 @@ function displayHikeResults(responseJSON){
     for (let i=0; i<responseJSON.trails.length; i++) {
       $('.js-hike-results').append(`
         <li>
-          <img src="${responseJSON.trails[i].imgSqSmall}">
-          <h4>${responseJSON.trails[i].name}</h4>
+          <h4><a href='${responseJSON.trails[i].url}' target='blank'>${responseJSON.trails[i].name}</a></h4>
           <p>Location: ${responseJSON.trails[i].location}
           <br>Distance: ${responseJSON.trails[i].length} miles
           <br>Rating: ${responseJSON.trails[i].stars}/5 stars based on ${responseJSON.trails[i].starVotes} reviews</p>
