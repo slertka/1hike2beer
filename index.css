@@ -8,9 +8,12 @@ body {
   display: none;
 }
 
+.results {
+  height: 500px;
+}
+
 .hike-results, .display-map, .beer-results {
   border: 1px solid black;
-  height: 450px;
   overflow-y: scroll;
 }
 
@@ -36,4 +39,8 @@ h2{
 
 .before-results {
   margin: 100px 0px;
+}
+
+form {
+  margin: 10px;
 }
