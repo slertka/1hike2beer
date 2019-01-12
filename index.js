@@ -3,11 +3,10 @@ const hikeAPIKey = '200405472-b58f2be71509e5cbbac487a794df0b61';
 const mapsAPIKey = 'AIzaSyA2pbng72aHFW9jfZ7wmXT8H12MNpTerW8';
 
 // BASE API URLS
-const hikeURL = 'https://www.hikingproject.com/data/get-trails?';
+const hikeURL = 'https://www.hikingproject.com/data/get-trails?maxResults=50&';
 const geocodeURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
 
 var map;
-var marker;
 
 // Function converts location entered in search to lattitude and longitude
 function convertLocToLatLong(location, dist){
@@ -41,7 +40,9 @@ function displayHikeResults(responseJSON){
         <br>Rating: ${responseJSON.trails[i].stars}/5 stars based on ${responseJSON.trails[i].starVotes} reviews</p>
       </li>
     `);
-    marker = new google.maps.Marker({position: {'lat': responseJSON.trails[i].latitude, 'lng': responseJSON.trails[i].longitude}, map: map})
+    var hikeMarker = new google.maps.Marker({position: {'lat': responseJSON.trails[i].latitude, 'lng': responseJSON.trails[i].longitude}, 
+    icon: 'sml-hiker.png',
+    map: map})
   }
 }
 
@@ -68,7 +69,9 @@ function displayBeerResults(results, status) {
           <p>Rating: ${results[i].rating}/5 stars based on ${results[i].user_ratings_total} reviews</p>
         </li>
       `);
-    marker = new google.maps.Marker({position: results[i].geometry.location, map: map})
+    var beerMarker = new google.maps.Marker({position: results[i].geometry.location, 
+      icon: 'sml-beer.png',
+      map: map})
     }
   }
 }
@@ -96,6 +99,7 @@ function watchForm(){
     let searchLoc = $('form').find('#search-loc').val();
     let searchDist = $('form').find('#max-distance').val();
     convertLocToLatLong(searchLoc, searchDist);
+    $('.results').removeClass('hidden');
   })
 };
 
