@@ -43,12 +43,13 @@ function displayHikeResults(responseJSON){
       `)
       var hikeMarker = new google.maps.Marker({position: {'lat': responseJSON.trails[i].latitude, 'lng': responseJSON.trails[i].longitude}, 
       icon: 'sml-hiker.png',
-      map: map}
+      map: map})
     }
+  } else {
+    $('.js-hike-results').html(`
+    <p>or not! Looks like we couldn't find any hikes in that area. Try increasing your search distance or entering a new address.</p>
+  `)
   }
-  $('.js-hike-results').html(`
-      <p>or not! Looks like we couldn't find any hikes in that area. Try increasing your search distance or entering a new address.</p>
-    `)
 }
 
 function getHikeResults(coordinates, dist){
