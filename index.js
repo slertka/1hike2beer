@@ -30,20 +30,25 @@ function convertLocToLatLong(location, dist){
 
 function displayHikeResults(responseJSON){
   $('.js-hike-results').empty();
-  for (let i=0; i<responseJSON.trails.length; i++) {
-    $('.js-hike-results').append(`
-      <li>
-        <img src="${responseJSON.trails[i].imgSqSmall}">
-        <h4>${responseJSON.trails[i].name}</h4>
-        <p>Location: ${responseJSON.trails[i].location}
-        <br>Distance: ${responseJSON.trails[i].length} miles
-        <br>Rating: ${responseJSON.trails[i].stars}/5 stars based on ${responseJSON.trails[i].starVotes} reviews</p>
-      </li>
-    `);
-    var hikeMarker = new google.maps.Marker({position: {'lat': responseJSON.trails[i].latitude, 'lng': responseJSON.trails[i].longitude}, 
-    icon: 'sml-hiker.png',
-    map: map})
+  if (responseJSON.trails.length !== 0) {
+    for (let i=0; i<responseJSON.trails.length; i++) {
+      $('.js-hike-results').append(`
+        <li>
+          <img src="${responseJSON.trails[i].imgSqSmall}">
+          <h4>${responseJSON.trails[i].name}</h4>
+          <p>Location: ${responseJSON.trails[i].location}
+          <br>Distance: ${responseJSON.trails[i].length} miles
+          <br>Rating: ${responseJSON.trails[i].stars}/5 stars based on ${responseJSON.trails[i].starVotes} reviews</p>
+        </li>
+      `)
+      var hikeMarker = new google.maps.Marker({position: {'lat': responseJSON.trails[i].latitude, 'lng': responseJSON.trails[i].longitude}, 
+      icon: 'sml-hiker.png',
+      map: map}
+    }
   }
+  $('.js-hike-results').html(`
+      <p>or not! Looks like we couldn't find any hikes in that area. Try increasing your search distance or entering a new address.</p>
+    `)
 }
 
 function getHikeResults(coordinates, dist){
