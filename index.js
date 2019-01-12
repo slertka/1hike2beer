@@ -24,6 +24,8 @@ function convertLocToLatLong(location, dist){
       let searchCoord = responseJSON.results[0].geometry.location;
       getHikeResults(searchCoord, dist);
       initPlaceMap(searchCoord, dist);
+      $('.results').removeClass('hidden');
+      $('form').removeClass('before-results');
     })
     .catch(err => console.log(err.message))
 }
@@ -41,7 +43,7 @@ function displayHikeResults(responseJSON){
         </li>
       `)
       var hikeMarker = new google.maps.Marker({position: {'lat': responseJSON.trails[i].latitude, 'lng': responseJSON.trails[i].longitude}, 
-      icon: 'sml-hiker.png',
+      icon: 'sml-boots.png',
       map: map})
     }
   } else {
@@ -104,7 +106,6 @@ function watchForm(){
     let searchLoc = $('form').find('#search-loc').val();
     let searchDist = $('form').find('#max-distance').val();
     convertLocToLatLong(searchLoc, searchDist);
-    $('.results').removeClass('hidden');
   })
 };
 

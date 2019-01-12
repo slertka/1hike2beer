@@ -1,3 +1,9 @@
+body {
+  font-family: 'Quicksand', Helvetica, Arial, sans-serif;
+  font-size: .5rem;
+  text-align: center;
+}
+
 .hidden {
   display: none;
 }
@@ -15,4 +21,19 @@
 ul {
   list-style-type: none;
   padding: 0px;
+}
+
+h1 {
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+h2{
+  font-size: .75rem;
+}
+
+.before-results {
+  margin: 100px 0px;
 }
