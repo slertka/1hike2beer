@@ -22,24 +22,30 @@
   <div class='container-fluid'>
     <div class='row'>
       <div class='col'>
+        <!-- Acts as header for website -->
         <h1>1hike2beer</h1>
         <h2>Go on a hike. Treat yo' self with a beer.</h2>
+        <!-- Form collects data from user to gather (1) Search Location and (2) Search Radius -->
         <form class='before-results'>
           <legend>Where do you want to go hiking?</legend>
           <input type="text" placeholder="Enter city or zipcode" id='search-loc' required>
-          <input type="text" placeholder="Search distance" id="max-distance" required>
+          <input type="text" placeholder="Search distance (miles)" id="max-distance" required>
           <input type="submit">
         </form>
       </div>
     </div>
+    <!-- Displays map, hike search results, and beer search results -->
     <div class='row results hidden'>
-        <div class='col-sm-6 display-map'>
-            <div id='map'></div>
-          </div>    
+      <!-- Displays Map -->
+      <div class='col-sm-6 display-map'>
+          <div id='map'></div>
+      </div>  
+      <!--Displays Hike Results  -->
       <div class='col hike-results'>
         <h3>First, we go on a hike...</h3>
         <ul class='js-hike-results'></ul>    
       </div>
+      <!-- Displays beer results -->
       <div class='col beer-results'>
       <h3>Then we enjoy some beer...</h3>
       <ul class='js-beer-results'> </ul>   
