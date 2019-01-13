@@ -36,7 +36,8 @@ function convertLocToLatLong(location, dist){
 
       // Remove classes for formatting of initial page vs. results page
       $('.results').removeClass('hidden');
-      $('form').removeClass('before-results');
+      $('.header-before').removeClass('h-100 align-items-center').addClass('align-items-start');
+      
     })
     .catch(err => console.log(err.message))
 }
