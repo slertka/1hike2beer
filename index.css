@@ -4,6 +4,24 @@ body {
   text-align: center;
 }
 
+.hidden {
+  display: none;
+}
+
+.hike-results, .display-map, .beer-results {
+  border: 1px solid black;
+  overflow-y: scroll;
+  height: 500px;
+}
+
+.before-results {
+  margin: 100px 0px;
+}
+
+#map {
+  height: 100%;
+}
+
 ul {
   list-style-type: none;
   padding: 0px;
@@ -27,25 +45,4 @@ form {
 input[type='text'] {
   width: 200px;
   text-align: center;
-}
-
-.hidden {
-  display: none;
-}
-
-.results {
-  height: 500px;
-}
-
-.hike-results, .display-map, .beer-results {
-  border: 1px solid black;
-  overflow-y: scroll;
-}
-
-.before-results {
-  margin: 100px 0px;
-}
-
-#map {
-  height: 100%;
 }
