@@ -9,9 +9,12 @@ const geocodeURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
 var map;
 
 // Function converts location entered in search to lattitude and longitude
+// The hike API runs from this function since lat & long are required parameters
 function convertLocToLatLong(location, dist){
+  // Creates URL for geocoding a location
   let searchURL = geocodeURL + `address=${encodeURIComponent(location)}&key=${mapsAPIKey}` ;
 
+  // Fetch for the geocode data
   fetch(searchURL)
     .then(response => {
       if (response.ok) {
@@ -21,16 +24,30 @@ function convertLocToLatLong(location, dist){
     }
       )
     .then(responseJSON => {
+      // Define variable for object returned from geocode API {lat: num, lng: num}
       let searchCoord = responseJSON.results[0].geometry.location;
+
+      // Runs and displays hike results
       getHikeResults(searchCoord, dist);
+
+      // Displays map and beer results
+      // Beer results are loaded from the Maps API with the Places library loaded
       initPlaceMap(searchCoord, dist);
+
+      // Remove classes for formatting of initial page vs. results page
+      $('.results').removeClass('hidden');
       $('form').removeClass('before-results');
     })
     .catch(err => console.log(err.message))
 }
 
+// Function to display the hike results with markers
 function displayHikeResults(responseJSON){
+  // Empty the current results if user refreshes results changing location or distance
   $('.js-hike-results').empty();
+
+  // Creates HTML to display results
+  // Checks if there are any hikes returned from search
   if (responseJSON.trails.length !== 0) {
     for (let i=0; i<responseJSON.trails.length; i++) {
       $('.js-hike-results').append(`
@@ -46,6 +63,7 @@ function displayHikeResults(responseJSON){
       map: map})
     }
   } else {
+    // Successful response but there are no hikes found in the given location
     $('.js-hike-results').html(`
     <p>or not! Looks like we couldn't find any hikes in that area. Try increasing your search distance or entering a new address.</p>
   `)
@@ -105,7 +123,6 @@ function watchForm(){
     let searchLoc = $('form').find('#search-loc').val();
     let searchDist = $('form').find('#max-distance').val();
     convertLocToLatLong(searchLoc, searchDist);
-    $('.results').removeClass('hidden');
   })
 };
 
