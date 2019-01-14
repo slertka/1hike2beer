@@ -69,6 +69,10 @@
   .header-after>h1 {
     font-size: 4rem;
   }
+
+  p {
+    font-size: 1.25rem;
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
