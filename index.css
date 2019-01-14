@@ -3,14 +3,14 @@ html, body {
   font-size: .5rem;
   text-align: center;
   height: 100%;
-  background: url('background.jpg') no-repeat;
+  background: url('background-1.jpg') no-repeat;
   background-size: cover;
   background-position: fixed;
 }
 
 .header-before {
   background-color:rgb(255, 255, 255); 
-  opacity: 0.6;
+  opacity: 0.8;
   margin-left: 20px;
   margin-right: 20px;
   border-radius: 5px;
@@ -20,7 +20,7 @@ html, body {
 .header-after {
   width: 100%;
   background-color: white;
-  opacity: 0.6;
+  opacity: 0.8;
   margin-bottom: 20px;
   position: relative;
   top: 0;
@@ -32,18 +32,26 @@ html, body {
 
 .results {
   overflow-y: scroll;
+  height: 60%
+}
+
+h3 {
+  font-weight: 800;
 }
 
 .hike-results, .beer-results {
   overflow-y: scroll;
-  height: 45%;
-  padding: 20px;
+  height: 30%;
+  padding: 5px;
   background-color: white;
-  opacity: 0.6;
+  opacity: 0.8;
+  margin-left: 1px;
+  margin-right: 1px;
+  border-radius: 5px;
 }
 
 .display-map {
-  height: 50%;
+  height: 60%;
 }
 
 #map {
@@ -63,20 +71,24 @@ h1 {
 }
 
 h2{
-  font-size: 1rem;
+  font-size: 1.75rem;
 }
 
 form {
   margin: 10px;
 }
 
+legend {
+  font-size: 2.5em;
+}
+
 input {
-  border: 1px solid black;
+  border: 1px solid grey;
   margin: 2px;
 }
 
 input[type='text'] {
-  width: 47.5%;
+  width: 45%;
   text-align: center;
 }
 
