@@ -25,11 +25,26 @@
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
   .results {
-    height: 75%;
+    height: 70%;
   }
   .display-map, .beer-results, .hike-results {
-    height: 100%;
+    height: 95%;
   }    
+  h1 {
+    font-size: 4rem;
+  }
+  legend {
+    font-size: 4em;
+  }
+
+  input {
+    font-size: 3em;
+  }
+
+  .beer-results {
+    margin-right: 15px;
+  }
+  
  }
 
 /* Large devices (desktops, 992px and up) */
@@ -48,7 +63,12 @@
   .header-before {
     width: 300px;
   }
-
+  h1 {
+    font-size: 6rem;
+  }
+  .header-after>h1 {
+    font-size: 4rem;
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */

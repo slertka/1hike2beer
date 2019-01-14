@@ -21,7 +21,6 @@ html, body {
   width: 100%;
   background-color: white;
   opacity: 0.8;
-  margin-bottom: 20px;
   position: relative;
   top: 0;
 }
@@ -32,7 +31,8 @@ html, body {
 
 .results {
   overflow-y: scroll;
-  height: 60%
+  height: 60%;
+  margin-top: 20px;
 }
 
 h3 {
@@ -45,9 +45,18 @@ h3 {
   padding: 5px;
   background-color: white;
   opacity: 0.8;
-  margin-left: 1px;
-  margin-right: 1px;
+  margin-left: 2px;
+  margin-right: 2px;
   border-radius: 5px;
+}
+
+.hike-results > a {
+  color: black;
+}
+
+a:visited, a:link, a:hover {
+  text-decoration: none;
+  color: black;
 }
 
 .display-map {
