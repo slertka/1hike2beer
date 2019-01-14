@@ -1,22 +1,43 @@
-// Extra small devices (portrait phones, less than 576px)
-// No media query for `xs` since this is the default in Bootstrap
+/* Extra small devices (portrait phones, less than 576px) */
+/* No media query for `xs` since this is the default in Bootstrap */
 
-// Small devices (landscape phones, 576px and up)
+/* Small devices (landscape phones, 576px and up) */
 @media (max-width: 576px) { 
 
 }
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { 
+/* Small devices (height for display) */
+@media (min-height: 570px) {
+  .results {
+    height: 70%;
+  }
 
+  .display-map {
+    height: 50%;
+  }
+
+  .beer-results, .hike-results {
+    height: 50%;
+    margin-top: 5px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+  .results {
+    height: 75%;
+  }
+  .display-map, .beer-results, .hike-results {
+    height: 100%;
+  }    
  }
 
-// Large devices (desktops, 992px and up)
+/* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
 
 }
 
-// Extra large devices (large desktops, 1200px and up)
+/* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
 
 }
