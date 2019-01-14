@@ -55,7 +55,7 @@ function displayHikeResults(responseJSON){
         <li class='ind-hike-result'>
           <h4><a href='${responseJSON.trails[i].url}' target='blank'>${responseJSON.trails[i].name}</a></h4>
           <p>Location: ${responseJSON.trails[i].location}
-          <br>Distance: ${responseJSON.trails[i].length} miles
+          <br>Length: ${responseJSON.trails[i].length} miles
           <br>Rating: ${responseJSON.trails[i].stars}/5 stars based on ${responseJSON.trails[i].starVotes} reviews</p>
         </li>
       `)
