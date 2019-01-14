@@ -52,7 +52,7 @@ function displayHikeResults(responseJSON){
   if (responseJSON.trails.length !== 0) {
     for (let i=0; i<responseJSON.trails.length; i++) {
       $('.js-hike-results').append(`
-        <li>
+        <li class='ind-hike-result'>
           <h4><a href='${responseJSON.trails[i].url}' target='blank'>${responseJSON.trails[i].name}</a></h4>
           <p>Location: ${responseJSON.trails[i].location}
           <br>Distance: ${responseJSON.trails[i].length} miles
@@ -89,7 +89,7 @@ function displayBeerResults(results, status) {
     $('.js-beer-results').empty();
     for (let i=0; i<results.length; i++) {
       $('.js-beer-results').append(`
-        <li>
+        <li class='ind-beer-result'>
           <h4>${results[i].name}</h4>
           <p>Rating: ${results[i].rating}/5 stars based on ${results[i].user_ratings_total} reviews</p>
         </li>
