@@ -9,7 +9,7 @@
 /* Small devices (height for display) */
 @media (min-height: 570px) {
   .results {
-    height: 70%;
+    height: 74%;
   }
 
   .display-map {
@@ -17,7 +17,7 @@
   }
 
   .beer-results, .hike-results {
-    height: 50%;
+    height: 47%;
     margin-top: 5px;
   }
 }
