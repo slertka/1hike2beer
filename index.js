@@ -70,7 +70,7 @@ function displayHikeResults(responseJSON){
   } else {
     // Successful response but there are no hikes found in the given location
     $('.js-hike-results').html(`
-    <p>or not! Looks like we couldn't find any hikes in that area. Try increasing your search distance or entering a new address.</p>
+    <p>or not! Looks like we couldn't find any hikes in that area. Try increasing your search distance or entering a new location.</p>
   `)
   }
 }
@@ -137,28 +137,18 @@ function watchForm(){
     event.preventDefault();
     let searchLoc = $('form').find('#search-loc').val();
     let searchDist = $('form').find('#max-distance').val();
-    // validateForm(searchLoc, searchDist);
-    convertLocToLatLong(searchLoc, searchDist);
+    validateSearchRadius(searchLoc, searchDist);
+    // convertLocToLatLong(searchLoc, searchDist);
   })
 };
 
-// Validate the user form
-function validateForm(address, distance) {
-
-}
-
-// Validates search distance 
-function validateSearchRadius(distance) {
-  if (distance > 0 && distance <= 200) {
-    return true;
+// Validate Search Radius for between 0 and 200 miles
+function validateSearchRadius(location, dist) {
+  if (dist > 0 && dist <= 200) {
+    convertLocToLatLong(location, dist);
   } else {
-    alert('Max search distance is 200 miles. Please enter a valid number.')
+    alert('Enter a valid search radius between 1 and 200 miles.')
   }
-}
-
-// Validate address 
-function validateAddress(address) {
-  
 }
 
 watchForm();
