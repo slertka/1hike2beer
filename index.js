@@ -40,7 +40,10 @@ function convertLocToLatLong(location, dist){
       $('#main-search').removeClass('header-before').addClass('header-after')  
       $('#slogan').empty().html(`Go on a hike. Treat yo'self with a beer`).addClass('after-results')    
     })
-    .catch(err => console.log(err.message))
+    .catch(err => {
+      console.log(err.message)
+      alert('Enter a valid address');
+    })
 }
 
 // Function to display the hike results with markers
@@ -72,9 +75,14 @@ function displayHikeResults(responseJSON){
   }
 }
 
+// Function uses coordinates from convertLocToLatLong() to run search API
 function getHikeResults(coordinates, dist){
+
+  // Create hike search URL
   let hikeSearchURL = hikeURL + `lat=${coordinates.lat}&lon=${coordinates.lng}&key=${hikeAPIKey}&maxDistance=${dist}`;
   console.log(hikeSearchURL)
+
+  // When response is successful, loads hike results into HTML
   fetch(hikeSearchURL)
     .then(response => {
       if (response.ok) {
@@ -85,6 +93,7 @@ function getHikeResults(coordinates, dist){
     .then(responseJSON => displayHikeResults(responseJSON))
 }
 
+// Works the same way as displayHikeResults()
 function displayBeerResults(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) { 
     $('.js-beer-results').empty();
@@ -95,6 +104,8 @@ function displayBeerResults(results, status) {
           <p>${results[i].rating}/5 stars based on ${results[i].user_ratings_total} reviews</p>
         </li>
       `);
+
+    // Uses beer icon
     var beerMarker = new google.maps.Marker({position: results[i].geometry.location, 
       icon: 'sml-beer.png',
       map: map})
@@ -102,6 +113,7 @@ function displayBeerResults(results, status) {
   }
 }
 
+// Loads Map and displays Beer Results with a Marker and HTML
 function initPlaceMap(coordinates, dist) {
   let searchArea = new google.maps.LatLng(coordinates.lat, coordinates.lng);
   map = new google.maps.Map(document.getElementById('map'), {
@@ -119,13 +131,34 @@ function initPlaceMap(coordinates, dist) {
   service.nearbySearch(request, displayBeerResults)
 }
 
+// Listens to submit form event to display results for user
 function watchForm(){
   $('form').submit(event => {
     event.preventDefault();
     let searchLoc = $('form').find('#search-loc').val();
     let searchDist = $('form').find('#max-distance').val();
+    // validateForm(searchLoc, searchDist);
     convertLocToLatLong(searchLoc, searchDist);
   })
 };
+
+// Validate the user form
+function validateForm(address, distance) {
+
+}
+
+// Validates search distance 
+function validateSearchRadius(distance) {
+  if (distance > 0 && distance <= 200) {
+    return true;
+  } else {
+    alert('Max search distance is 200 miles. Please enter a valid number.')
+  }
+}
+
+// Validate address 
+function validateAddress(address) {
+  
+}
 
 watchForm();
