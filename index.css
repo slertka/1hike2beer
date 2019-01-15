@@ -56,11 +56,15 @@ h3 {
 }
 
 
-a:visited, a:link, a:hover {
+a:visited, a:link {
   text-decoration: none;
   color: black;
   font-size: 1.75rem;
   font-weight: 800;
+}
+
+a:hover {
+  font-size: 1.8rem;
 }
 
 h4 {
