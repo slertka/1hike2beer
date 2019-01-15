@@ -121,12 +121,14 @@ function initPlaceMap(coordinates, dist) {
     zoom: 10
   });
 
+  // Set required parameters for .nearbySearch method
   var request = {
     location: searchArea,
     radius: dist*1609,
     keyword: 'brewpub'
   };
 
+  // Places beer marker
   let service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, displayBeerResults)
 }

@@ -1,11 +1,6 @@
 /* Extra small devices (portrait phones, less than 576px) */
 /* No media query for `xs` since this is the default in Bootstrap */
 
-/* Small devices (landscape phones, 576px and up) */
-@media (max-width: 576px) { 
-
-}
-
 /* Small devices (height for display) */
 @media (min-height: 570px) {
   .results {
@@ -27,6 +22,7 @@
   .results {
     height: 77%;
   }
+
   .display-map {
     height: 60%;
     margin-top: 12%;
@@ -68,9 +64,11 @@
   .header-before {
     width: 300px;
   }
+
   h1 {
     font-size: 6rem;
   }
+
   .header-after>h1 {
     font-size: 4rem;
   }
@@ -78,9 +76,4 @@
   p {
     font-size: 1.25rem;
   }
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { 
-
 }
