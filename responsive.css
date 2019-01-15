@@ -25,9 +25,14 @@
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
   .results {
-    height: 70%;
+    height: 77%;
   }
-  .display-map, .beer-results, .hike-results {
+  .display-map {
+    height: 60%;
+    margin-top: 12%;
+  }
+  
+  .beer-results, .hike-results {
     height: 95%;
   }    
   h1 {
