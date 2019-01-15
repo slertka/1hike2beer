@@ -9,7 +9,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">  
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Quicksand|Raleway:800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand|Raleway:800|Aleo" rel="stylesheet">
   <!-- Custom CSS -->
   <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="responsive.css" />
@@ -24,12 +24,12 @@
       <div class='col header-before' id='main-search'>
         <!-- Acts as header for website -->
         <h1>1hike2beer</h1>
-        <h2>Go on a hike. Treat yo' self with a beer.</h2>
+        <h2 id='slogan'>Go on a hike.<br>Treat yo' self with a beer.</h2>
         <!-- Form collects data from user to gather (1) Search Location and (2) Search Radius -->
         <form>
           <legend>Where do you want to go hiking?</legend>
           <input type="text" placeholder="Enter city or zipcode" id='search-loc' required>
-          <input type="text" placeholder="Search distance (miles)" id="max-distance" required>
+          <input type="text" placeholder="Search radius (miles)" id="max-distance" required>
           <input type="submit">
         </form>
       </div>

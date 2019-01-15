@@ -37,7 +37,8 @@ function convertLocToLatLong(location, dist){
       // Remove classes for formatting of initial page vs. results page
       $('.results').removeClass('hidden');
       $('.header').removeClass('h-100 align-items-center').addClass('align-items-start');
-      $('#main-search').removeClass('header-before').addClass('header-after')      
+      $('#main-search').removeClass('header-before').addClass('header-after')  
+      $('#slogan').empty().html(`Go on a hike. Treat yo'self with a beer`).addClass('after-results')    
     })
     .catch(err => console.log(err.message))
 }
@@ -54,9 +55,9 @@ function displayHikeResults(responseJSON){
       $('.js-hike-results').append(`
         <li class='ind-hike-result'>
           <h4><a href='${responseJSON.trails[i].url}' target='blank'>${responseJSON.trails[i].name}</a></h4>
-          <p>Location: ${responseJSON.trails[i].location}
+          <p><i>${responseJSON.trails[i].location}</i>
           <br>Length: ${responseJSON.trails[i].length} miles
-          <br>Rating: ${responseJSON.trails[i].stars}/5 stars based on ${responseJSON.trails[i].starVotes} reviews</p>
+          <br>${responseJSON.trails[i].stars}/5 stars based on ${responseJSON.trails[i].starVotes} reviews</p>
         </li>
       `)
       var hikeMarker = new google.maps.Marker({position: {'lat': responseJSON.trails[i].latitude, 'lng': responseJSON.trails[i].longitude}, 
@@ -91,7 +92,7 @@ function displayBeerResults(results, status) {
       $('.js-beer-results').append(`
         <li class='ind-beer-result'>
           <h4>${results[i].name}</h4>
-          <p>Rating: ${results[i].rating}/5 stars based on ${results[i].user_ratings_total} reviews</p>
+          <p>${results[i].rating}/5 stars based on ${results[i].user_ratings_total} reviews</p>
         </li>
       `);
     var beerMarker = new google.maps.Marker({position: results[i].geometry.location, 
