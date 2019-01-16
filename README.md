@@ -14,6 +14,6 @@ The hike and brewery results are displayed both visually on the map and in a lis
 
 ### Mobile View
 #### Home Page
-![Mobile Home Page](README-imgs/mobile-home.jpg)
+![Mobile Home Page](README-imgs/mobile-home.jpg) <!-- .element height="50%" -->
 #### Results Page
 ![Mobile Results Page](README-imgs/mobile-results.jpg)
