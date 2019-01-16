@@ -19,3 +19,6 @@ The hike and brewery results are displayed both visually on the map and in a lis
 
 #### Results Page
 <img src='README-imgs/mobile-results.jpg' width='50%' height='50%' alt='Mobile Results Page'>
+
+### Technology Used
+(HTML / CSS / JavaScript / jQuery)
