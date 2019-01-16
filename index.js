@@ -95,8 +95,9 @@ function getHikeResults(coordinates, dist){
 
 // Works the same way as displayHikeResults()
 function displayBeerResults(results, status) {
+  $('.js-beer-results').empty();
+
   if (status == google.maps.places.PlacesServiceStatus.OK) { 
-    $('.js-beer-results').empty();
     for (let i=0; i<results.length; i++) {
       $('.js-beer-results').append(`
         <li class='ind-beer-result'>
@@ -110,6 +111,8 @@ function displayBeerResults(results, status) {
       icon: 'sml-beer.png',
       map: map})
     }
+  } else {
+    $('.js-beer-results').html(`<p>but, we couldn't find any breweries! Try increasing your search distance or entering a new location.</p>`)
   }
 }
 
