@@ -9,11 +9,13 @@ The hike and brewery results are displayed both visually on the map and in a lis
 ### Desktop View
 #### Home Page
 ![Desktop Home Page](README-imgs/desktop-home.jpg)
+
 #### Results Page
 ![Desktop Results Page](README-imgs/desktop-results.jpg)
 
 ### Mobile View
 #### Home Page
-![Mobile Home Page](README-imgs/mobile-home.jpg) <!-- .element height="50%" -->
+<img src='README-imgs/mobile-home.jpg' width='50%' height='50%' alt='Mobile Home Page'/>
+
 #### Results Page
-![Mobile Results Page](README-imgs/mobile-results.jpg)
+<img src='README-imgs/mobile-results.jpg' width='50%' height='50%' alt='Mobile Results Page'>
