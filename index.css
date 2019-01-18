@@ -67,8 +67,11 @@ a:hover {
 }
 
 input {
-  border: 1px solid grey;
+  border: 1px solid white;
   margin: 2px;
+  background-color: #F2DDDA;
+  color: black;
+  font-weight: 800;
 }
 
 input[type='text'] {

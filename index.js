@@ -64,7 +64,7 @@ function displayHikeResults(responseJSON){
         </li>
       `)
       var hikeMarker = new google.maps.Marker({position: {'lat': responseJSON.trails[i].latitude, 'lng': responseJSON.trails[i].longitude}, 
-      icon: 'sml-boots.png',
+      icon: 'sml-hiker.png',
       map: map})
     }
   } else {

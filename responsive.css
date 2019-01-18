@@ -52,6 +52,7 @@
 @media (min-width: 992px) { 
   input[type='text'] {
     width: 200px;
+    font-size: 1.75rem;
   }
   
   input[type='submit'] {
